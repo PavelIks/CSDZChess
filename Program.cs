@@ -16,7 +16,7 @@ namespace dzshka
     {
         public C_Pole()
         {
-            x_chornaya_peshka = 10;
+            x_chornaya_peshka = 18;
             x_belaya_peshka = 1;
 
         }
@@ -67,9 +67,9 @@ namespace dzshka
 
         void I_Dvizheniye_chernoy_peshki.Move_chornaya_peshka()
         {
-            if ((pole.getPosX_chornaya_peshka() - 1) < pole.getPosX_belaya_peshka())
+            if ((pole.getPosX_chornaya_peshka() - 2) < pole.getPosX_belaya_peshka())
             {
-                Console.WriteLine("Чёрный выиграл!");
+                Console.WriteLine("Белый выиграл!");
             }
             else
             {
@@ -82,9 +82,9 @@ namespace dzshka
 
         void I_Dvizheniye_beloy_peshki.Move_belaya_peshka()
         {
-            if ((pole.getPosX_belaya_peshka() + 1) > pole.getPosX_chornaya_peshka() && (pole.getPosX_chornaya_peshka() - 1) < pole.getPosX_belaya_peshka())
+            if ((pole.getPosX_belaya_peshka() + 2) > pole.getPosX_chornaya_peshka() && (pole.getPosX_chornaya_peshka() - 1) < pole.getPosX_belaya_peshka())
             {
-                Console.WriteLine("Белый выиграл!");
+                Console.WriteLine("Чёрный выиграл!");
             }
             else
             {
@@ -113,6 +113,9 @@ namespace dzshka
             belaya_peshka_1.Move_belaya_peshka();
             chernaya_peshka_1.Move_chornaya_peshka();
             belaya_peshka_1.Move_belaya_peshka();
+            chernaya_peshka_1.Move_chornaya_peshka();
+            belaya_peshka_1.Move_belaya_peshka();
+            chernaya_peshka_1.Move_chornaya_peshka();
         }
     }
 }
