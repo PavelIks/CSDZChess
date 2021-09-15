@@ -4,63 +4,55 @@ namespace dzshka
 {
     interface I_Dvizheniye_beloy_peshki
     {
-        void Move()
-        {
-            C_Pole pole;
-            pole.setPosX(pole.getPosX() - 1);
-            Console.WriteLine("Походил белой пешкой!");
-            Console.WriteLine(pole.getPosX());
-        }
+        void Move_belaya_peshka();
     }
 
     interface I_Dvizheniye_chernoy_peshki
     {
-        void Move()
-        {
-            C_Pole pole;
-            pole.setPosY(pole.getPosY() + 1);
-            Console.WriteLine("Походил чёрной пешкой!");
-            Console.WriteLine(pole.getPosY());
-        }
+        void Move_chornaya_peshka();
     }
 
     class C_Pole
     {
         public C_Pole()
         {
-            x = 10;
-            y = 10;
+            x_chornaya_peshka = 10;
+            x_belaya_peshka = 10;
+
         }
-        public C_Pole(int _x, int _y)
+        public C_Pole(int _x_chornaya_peshka, int _x_belaya_peshka)
         {
-            x = _x;
-            y = _y;
+            x_chornaya_peshka = _x_chornaya_peshka;
+            x_belaya_peshka = _x_belaya_peshka;
         }
         public void show()
         {
-            Console.Write(x + " : " + y);
+            Console.Write(x_chornaya_peshka);
+            Console.Write(x_belaya_peshka);
         }
 
-        public void setPosX(int _x)
+        public void setPosX_chornaya_peshka(int _x_chornaya_peshka)
         {
-            x = _x;
-        }
-        public void setPosY(int _y)
-        {
-            x = _y;
+            x_chornaya_peshka = _x_chornaya_peshka;
         }
 
-        public int getPosY()
+        public void setPosX_belaya_peshka(int _x_belaya_peshka)
         {
-            return y;
+            x_belaya_peshka = _x_belaya_peshka;
         }
 
-        public int getPosX()
+        public int getPosX_chornaya_peshka()
         {
-            return x;
+            return x_chornaya_peshka;
         }
-        public int x;
-        public int y;
+
+        public int getPosX_belaya_peshka()
+        {
+            return x_belaya_peshka;
+        }
+
+        public int x_belaya_peshka;
+        public int x_chornaya_peshka;
     }
 
     class C_Figura : I_Dvizheniye_beloy_peshki, I_Dvizheniye_chernoy_peshki
@@ -79,31 +71,38 @@ namespace dzshka
         {
             Console.Write(" ");
         }*/
+
+        C_Pole pole = new C_Pole();
+
+        void I_Dvizheniye_beloy_peshki.Move_belaya_peshka()
+        {
+            pole.setPosX_chornaya_peshka(pole.getPosX_chornaya_peshka() - 2);
+            Console.WriteLine("Походил чёрной пешкой!");
+            Console.WriteLine(pole.getPosX_chornaya_peshka());
+        }
+
+        public void Move_chornaya_peshka()
+        {
+            pole.setPosX_belaya_peshka(pole.getPosX_belaya_peshka() - 2);
+            Console.WriteLine("Походил белой пешкой!");
+            Console.WriteLine(pole.getPosX_belaya_peshka());
+        }
+
         public int chornaya_peshka;
         public int belaya_peshka;
     }
-
-    /*class C_Igra
-    {
-        public C_Igra()
-        {
-
-        }
-        public void show()
-        {
-            Console.Write(" ");
-        }
-    }*/
 
     class Program
     {
         static void Main(string[] args)
         {
+            C_Figura figura1 = new C_Figura();
             I_Dvizheniye_beloy_peshki belaya_peshka_1 = new C_Figura();
             I_Dvizheniye_chernoy_peshki chernaya_peshka_1 = new C_Figura();
 
-            belaya_peshka_1.Move();
-            chernaya_peshka_1.Move();
+            belaya_peshka_1.Move_belaya_peshka();
+            chernaya_peshka_1.Move_chornaya_peshka();
+
         }
     }
 }
