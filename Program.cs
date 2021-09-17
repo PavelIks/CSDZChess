@@ -16,7 +16,7 @@ namespace dzshka
     {
         public C_Field()
         {
-            black_checker_position = 10;
+            black_checker_position = 20;
             white_checker_position = 1;
 
         }
@@ -82,7 +82,7 @@ namespace dzshka
 
         void I_White_checker.White_checker_moves()
         {
-            if ((pole1.wc_get_pos() + 2) > pole1.bc_get_pos() && (pole1.bc_get_pos() - 1) < pole1.wc_get_pos())
+            if ((pole1.wc_get_pos() + 2) > pole1.bc_get_pos())
             {
                 Console.WriteLine("Чёрный выиграл!");
             }
@@ -112,6 +112,11 @@ namespace dzshka
             chernaya_peshka1.Black_checker_moves();
             belaya_peshka1.White_checker_moves();
             chernaya_peshka1.Black_checker_moves();
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
+            belaya_peshka1.White_checker_moves();
         }
     }
 }
