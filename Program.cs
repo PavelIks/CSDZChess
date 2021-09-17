@@ -2,120 +2,116 @@
 
 namespace dzshka
 {
-    interface I_Dvizheniye_beloy_peshki
+    interface I_White_checker
     {
-        void Move_belaya_peshka();
+        void White_checker_moves();
     }
 
-    interface I_Dvizheniye_chernoy_peshki
+    interface I_Black_checker
     {
-        void Move_chornaya_peshka();
+        void Black_checker_moves();
     }
 
-    class C_Pole
+    class C_Field
     {
-        public C_Pole()
+        public C_Field()
         {
-            x_chornaya_peshka = 18;
-            x_belaya_peshka = 1;
+            black_checker_position = 10;
+            white_checker_position = 1;
 
         }
-        public C_Pole(int _x_chornaya_peshka, int _x_belaya_peshka)
+        public C_Field(int black_checker_position_, int white_checker_position_)
         {
-            x_chornaya_peshka = _x_chornaya_peshka;
-            x_belaya_peshka = _x_belaya_peshka;
+            black_checker_position = black_checker_position_;
+            white_checker_position = white_checker_position_;
         }
 
-        public void setPosX_chornaya_peshka(int _x_chornaya_peshka)
+        public void bc_set_pos(int black_checker_position_)
         {
-            x_chornaya_peshka = _x_chornaya_peshka;
+            black_checker_position = black_checker_position_;
         }
 
-        public void setPosX_belaya_peshka(int _x_belaya_peshka)
+        public void wc_set_pos(int white_checker_position_)
         {
-            x_belaya_peshka = _x_belaya_peshka;
+            white_checker_position = white_checker_position_;
         }
 
-        public int getPosX_chornaya_peshka()
+        public int bc_get_pos()
         {
-            return x_chornaya_peshka;
+            return black_checker_position;
         }
 
-        public int getPosX_belaya_peshka()
+        public int wc_get_pos()
         {
-            return x_belaya_peshka;
+            return white_checker_position;
         }
 
-        public int x_belaya_peshka;
-        public int x_chornaya_peshka;
+        public int white_checker_position;
+        public int black_checker_position;
     }
 
-    class C_Figura : I_Dvizheniye_beloy_peshki, I_Dvizheniye_chernoy_peshki
+    class C_Figure : I_White_checker, I_Black_checker
     {
-        public C_Figura()
+        public C_Figure()
         {
-            chornaya_peshka = 0;
-            belaya_peshka = 0;
+            black_checker = 0;
+            white_checker = 0;
         }
-        public C_Figura(int _chornaya_peshka, int _belaya_peshka)
+        public C_Figure(int black_checker_, int white_checker_)
         {
-            chornaya_peshka = _chornaya_peshka;
-            belaya_peshka = _belaya_peshka;
+            black_checker = black_checker_;
+            white_checker = white_checker_;
         }
 
-        C_Pole pole = new C_Pole();
+        C_Field pole1 = new C_Field();
 
-        void I_Dvizheniye_chernoy_peshki.Move_chornaya_peshka()
+        void I_Black_checker.Black_checker_moves()
         {
-            if ((pole.getPosX_chornaya_peshka() - 2) < pole.getPosX_belaya_peshka())
+            if ((pole1.bc_get_pos() - 2) < pole1.wc_get_pos())
             {
                 Console.WriteLine("Белый выиграл!");
             }
             else
             {
-                pole.setPosX_chornaya_peshka(pole.getPosX_chornaya_peshka() - 2); // 8 6 4 2
-                pole.setPosX_belaya_peshka(pole.getPosX_belaya_peshka() + 2); // 3 5 7 9
+                pole1.bc_set_pos(pole1.bc_get_pos() - 2); // 8 6 4 2
+                pole1.wc_set_pos(pole1.wc_get_pos() + 2); // 3 5 7 9
                 Console.Write("Походил чёрной пешкой! - ");
-                Console.WriteLine(pole.getPosX_chornaya_peshka());
+                Console.WriteLine(pole1.bc_get_pos());
             }
         }
 
-        void I_Dvizheniye_beloy_peshki.Move_belaya_peshka()
+        void I_White_checker.White_checker_moves()
         {
-            if ((pole.getPosX_belaya_peshka() + 2) > pole.getPosX_chornaya_peshka() && (pole.getPosX_chornaya_peshka() - 1) < pole.getPosX_belaya_peshka())
+            if ((pole1.wc_get_pos() + 2) > pole1.bc_get_pos() && (pole1.bc_get_pos() - 1) < pole1.wc_get_pos())
             {
                 Console.WriteLine("Чёрный выиграл!");
             }
             else
             {
-                pole.setPosX_belaya_peshka(pole.getPosX_belaya_peshka() + 2); // 3 5 7 9
-                pole.setPosX_chornaya_peshka(pole.getPosX_chornaya_peshka() - 2); // 8 6 4 2
+                pole1.wc_set_pos(pole1.wc_get_pos() + 2); // 3 5 7 9
+                pole1.bc_set_pos(pole1.bc_get_pos() - 2); // 8 6 4 2
                 Console.Write("Походил белой пешкой! - ");
-                Console.WriteLine(pole.getPosX_belaya_peshka());
+                Console.WriteLine(pole1.wc_get_pos());
             }
         }
 
-        public int chornaya_peshka;
-        public int belaya_peshka;
+        public int black_checker;
+        public int white_checker;
     }
 
     class Program
     {
         static void Main(string[] args)
         {
-            I_Dvizheniye_beloy_peshki belaya_peshka_1 = new C_Figura();
-            I_Dvizheniye_chernoy_peshki chernaya_peshka_1 = new C_Figura();
+            I_White_checker belaya_peshka1 = new C_Figure();
+            I_Black_checker chernaya_peshka1 = new C_Figure();
 
-            belaya_peshka_1.Move_belaya_peshka();
-            chernaya_peshka_1.Move_chornaya_peshka();
-            belaya_peshka_1.Move_belaya_peshka();
-            chernaya_peshka_1.Move_chornaya_peshka();
-            belaya_peshka_1.Move_belaya_peshka();
-            chernaya_peshka_1.Move_chornaya_peshka();
-            belaya_peshka_1.Move_belaya_peshka();
-            chernaya_peshka_1.Move_chornaya_peshka();
-            belaya_peshka_1.Move_belaya_peshka();
-            chernaya_peshka_1.Move_chornaya_peshka();
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
         }
     }
 }
