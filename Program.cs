@@ -76,7 +76,7 @@ namespace dzshka
             {
                 pole1.bc_set_pos(pole1.bc_get_pos() - 2); // 8 6 4 2
                 pole1.wc_set_pos(pole1.wc_get_pos() + 2); // 3 5 7 9
-                Console.Write("Походил чёрной пешкой! - ");
+                Console.Write("Походил чёрной пешкой:\t");
                 Console.WriteLine(pole1.bc_get_pos());
             }
         }
@@ -92,7 +92,7 @@ namespace dzshka
             {
                 pole1.wc_set_pos(pole1.wc_get_pos() + 2); // 3 5 7 9
                 pole1.bc_set_pos(pole1.bc_get_pos() - 2); // 8 6 4 2
-                Console.Write("Походил белой пешкой! - ");
+                Console.Write("Походил белой пешкой:\t");
                 Console.WriteLine(pole1.wc_get_pos());
             }
         }
