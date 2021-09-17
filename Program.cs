@@ -70,6 +70,7 @@ namespace dzshka
             if ((pole1.bc_get_pos() - 2) < pole1.wc_get_pos())
             {
                 Console.WriteLine("Белый выиграл!");
+                Environment.Exit(0);
             }
             else
             {
@@ -85,6 +86,7 @@ namespace dzshka
             if ((pole1.wc_get_pos() + 2) > pole1.bc_get_pos())
             {
                 Console.WriteLine("Чёрный выиграл!");
+                Environment.Exit(0);
             }
             else
             {
@@ -106,6 +108,10 @@ namespace dzshka
             I_White_checker belaya_peshka1 = new C_Figure();
             I_Black_checker chernaya_peshka1 = new C_Figure();
 
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
+            belaya_peshka1.White_checker_moves();
+            chernaya_peshka1.Black_checker_moves();
             belaya_peshka1.White_checker_moves();
             chernaya_peshka1.Black_checker_moves();
             belaya_peshka1.White_checker_moves();
